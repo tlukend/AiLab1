@@ -1,6 +1,7 @@
-#class Node:
-
-#    def __init__(self, gValue, hValue):
+class Node:
+    #The constructor accepts a 2 dimensional array in which the state of the grid is saved
+    def __init__(self, state):
+        self.state = state
         #f(n) = g(n) + h(n) manhattan oder hamming
 
 
@@ -27,13 +28,7 @@
     # if h(n) == 0 we are done, otherwise to recursive function -> repeat
     # if solved, return goal array
 
-#def hamming (self, start, goal):
-#    temp = 0
-#    for i in range (0, 2):
-#        for j in range (0,2):
-#            if start[i][j] != goal[i][j] and start[i][j]!='_':
-#                temp += 1
-#    return temp
+
 
 
 
