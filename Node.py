@@ -1,9 +1,11 @@
 class Node:
     #The constructor accepts a 2 dimensional array in which the state of the grid is saved
     #If no parent is passed, parent is set to none
-    def __init__(self, state, parent=None):
+    def __init__(self, state, total_cost, parent=None):
         self.state = state
+        self.total_cost = total_cost
         self.parent = parent
+
         #f(n) = g(n) + h(n) manhattan oder hamming
 
 
