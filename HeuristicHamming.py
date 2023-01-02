@@ -10,7 +10,7 @@ class HeuristicHamming(Heuristic):
         hammingDistance = 0
         for i in range(0, 2):
             for j in range(0, 2):
-                if node.state[i][j] != goal[i][j] and node.state[i][j] != '_':
+                if node.state[i][j] != goal[i][j] and node.state[i][j] != 0:
                     hammingDistance += 1
         return hammingDistance
 
