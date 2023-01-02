@@ -3,9 +3,9 @@
 import grid
 
 def main():
-    grid_goal = [[0, 1, 2], [3, 4, 5], [6, 7, 8]]
+    grid_goal = [[0, 3, 6], [1, 4, 7], [2, 5, 8]]
     grid_list = []
-
+    print(grid.print_grid(grid_goal))
     #list 100 arrays
     for i in range(100):
         grid_list.append(grid.create_random_grid())
