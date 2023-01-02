@@ -1,27 +1,37 @@
-# main is our compare
+# main is our compare?
+# import numpy as np
+import grid
 
-#Variables: heuristic(heuristic) .. do we need this on???
-# further variables: grid gridStart();
+def main():
+    grid_goal = [[0, 1, 2], [3, 4, 5], [6, 7, 8]]
 
-#functions: createGrids(Hamming); createGrids(Manhattan); compare (hamming & manhattan)
+    print('Goal State: ')
+    grid.print_grid(grid_goal)
+    print('\n')
+
+    grid_list = []
+
+    # creates a list of 100 random grids
+    for i in range(100):
+        grid_list.append(grid.create_random_grid())
+
+    #prints length and arrays
+    print(str(len(grid_list)) + ' grids are created: \n')
+    #k = 1
+    for i in grid_list:
+        #print("Grid number " + str(k) + ":")
+        grid.print_grid(i)
+        print()
+        #k += 1
 
 
 
+if __name__ == "__main__":
+    main()
 
 
 
-# This is a sample Python script.
+#puzzle = new puzzle()
+#solver = new solverAstar(heuristichamming)
+#solver.solve(puzzle)
 
-# Press Umschalt+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Strg+F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('test')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
