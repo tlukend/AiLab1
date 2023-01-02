@@ -23,5 +23,7 @@ if __name__ == "__main__":
 
 
 
-
+#puzzle = new puzzle()
+#solver = new solverAstar(heuristichamming)
+#solver.solve(puzzle)
 
