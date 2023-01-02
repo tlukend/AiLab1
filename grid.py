@@ -22,6 +22,7 @@ def create_random_grid():
             array[x].append(number)
     return array
 
+
 def print_grid(array):
     for y in range(0, 3):
         for x in range(0, 3):
