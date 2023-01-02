@@ -17,9 +17,12 @@ def main():
 
     #prints length and arrays
     print(str(len(grid_list)) + ' grids are created: \n')
+    #k = 1
     for i in grid_list:
+        #print("Grid number " + str(k) + ":")
         grid.print_grid(i)
         print()
+        #k += 1
 
 
 
