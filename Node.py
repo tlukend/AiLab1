@@ -1,7 +1,9 @@
 class Node:
     #The constructor accepts a 2 dimensional array in which the state of the grid is saved
-    def __init__(self, state):
+    #If no parent is passed, parent is set to none
+    def __init__(self, state, parent=None):
         self.state = state
+        self.parent = parent
         #f(n) = g(n) + h(n) manhattan oder hamming
 
 
@@ -53,8 +55,7 @@ class Node:
 
 
 # Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print('Hello, World!')
+
 #print(node with smallest f(n) && h(n) 00 0)
 # also print
 
