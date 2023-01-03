@@ -12,25 +12,32 @@ class Node:
         self.parent = parent
         self.heuristic = 0
 
+    # calculates the total costs for a node
+    # f(n) = g(n) + h(n), f(n) = total_cost, g(n) = depth, h(n) = heuristic.calculate()
     def total_costs(self):
         return self.depth + self.heuristic
 
+    # returns a hash table - Access time for datatype set is O(1)
     def __hash__(self):
         return hash(str(self.state))
 
+    # compares two objects/states by there values
     def __eq__(self, other):
         return self.__class__ == other.__class__ and self.state == other.state
 
+    # to check if children are inside grid
     @staticmethod
     def is_inside_grid(x, y):
         return 0 <= x <= 2 and 0 <= y <= 2
 
+    # to get the number of a position -> returns value only if x and y are really in the grid 3 x 3
     def get_number_at(self, x, y):
         if not self.is_inside_grid(x, y):
             return None
         else:
             return self.state[x][y]
 
+    # returns the coordinates of the empty tile
     def get_empty_tile(self):
         for x in range(0, 3):
             for y in range(0, 3):
@@ -39,14 +46,15 @@ class Node:
 
     def generate_child_states(self):
         children = []
-        #koordinaten von leeren Kästchen
+        # coordinates of the empty tiles
         empty_tile = self.get_empty_tile()
-        # childstates werden generiert
+        # child states are generated - for each direction
         for direction in constants.DIRECTIONS:
-            #Vektoraddition um auf das neue Kästchen zu kommen das wir verschieben können
+            # vector addition to get the new grid which we can move
             x = empty_tile[0]+direction[0]
             y = empty_tile[1]+direction[1]
             if not self.is_inside_grid(x, y):
+                #try the next direction
                 continue
             else:
                 # copies the array using the python slicing operator ':'
@@ -55,10 +63,6 @@ class Node:
                 child_node = Node(new_state, self.depth + 1, self)
                 children.append(child_node)
         return children
-
-
-
-
 
  #   def createChild(self):
         #g(n) = g(n) + 1
@@ -84,15 +88,10 @@ class Node:
     # if solved, return goal array
 
 
-
-
-
-
 #consider, that there must be a state of not going back
 #should we empty the queue after we have chosen a child node?
 # if h == 0 , we are done
 # do we want to print every state until we reach goal? i say yes
-
 
 
 #def init ():
@@ -100,11 +99,6 @@ class Node:
     # checkIfSolvable
     #f = g + h
     #node
-
-
-
-
-
 
 
 # Press the green button in the gutter to run the script.

@@ -1,12 +1,8 @@
-#inherits to manhattan and hamming
 from Heuristic import Heuristic
-
-
-#Variables: countSteps, runtime(count), memoryEffort(numberOfNodes)
 
 class HeuristicHamming(Heuristic):
     def calculate(self, node, start, goal):
-        #this is the distance that the heuristic calculates
+        #it counts the wrong states of the puzzle
         hammingDistance = 0
         for i in range(0, 3):
             for j in range(0, 3):

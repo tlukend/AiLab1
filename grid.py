@@ -1,14 +1,4 @@
-# inherits to start and goal (2 extra classes??? - wie wird dies in python gelöst?)
 import random
-
-
-# variables: int i; array[3][3] ... kann sein dass für Befüllung noch ein array[9] benötigt wirdfun
-
-# functions: fill(array); print(array)
-
-# for i in range (0, 8):
-#    while (self.is_solved == true):
-
 
 def create_random_grid():
     array = [[], [], []]
@@ -69,12 +59,9 @@ def check_solvability(array):
         # print('Inversion Count: ' + str(inversion_count))
         return True
 
-
+#our logic how we swap two numbers
 def swap_cells(grid, cell1, cell2):
     temp = grid[cell1[0]][cell1[1]]
     grid[cell1[0]][cell1[1]] = grid[cell2[0]][cell2[1]]
     grid[cell2[0]][cell2[1]] = temp
 
-# grid = create_random_grid()
-# print_grid(grid)
-# print(grid)
