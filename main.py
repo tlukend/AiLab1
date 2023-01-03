@@ -18,7 +18,7 @@ def main():
     grid_list = []
 
     # creates a list of 100 random grids
-    for i in range(100):
+    for i in range(1):
         grid_list.append(grid.create_random_grid())
 
 
@@ -38,6 +38,9 @@ def main():
         puzzle.start_state = i
         a = solverHamming.solve(puzzle)
         print(a)
+
+        print('Now start_state == grid_goal if solved: ')
+        grid.print_grid(puzzle.start_state)
     endHamming = timer()
     # also returns or get_len_nodes(because it's a class???) count of all nodes used (memory usage) and
     # deletes all nodes (in class SolverAstar)
@@ -49,6 +52,9 @@ def main():
         puzzle.start_state = i
         a = solverManhatten.solve(puzzle)
         print(a)
+
+        print('Now start_state == grid_goal if solved: ')
+        grid.print_grid(puzzle.start_state)
     endManhattan = timer()
     # also returns or get_len_nodes(because it's a class???) count of all nodes used (memory usage) and
     # deletes all nodes (in class SolverAstar)
