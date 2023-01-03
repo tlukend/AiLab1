@@ -22,7 +22,6 @@ class SolverAstar(Solver):
                 return current_node
             else:
                 closed_nodes_set.add(current_node)
-
                 child_nodes = current_node.generate_child_states()
                 for child in child_nodes:
                     if child in open_nodes_set or child in closed_nodes_set:

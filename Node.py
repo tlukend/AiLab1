@@ -49,17 +49,14 @@ class Node:
             if not self.is_inside_grid(x, y):
                 continue
             else:
-                new_state = self.state.copy();
-                new_state[0] = new_state[0].copy();
-                new_state[1] = new_state[1].copy();
-                new_state[2] = new_state[2].copy();
+                # copies the array using the python slicing operator ':'
+                new_state = [column[:] for column in self.state]
                 swap_cells(new_state, empty_tile, (x, y))
                 child_node = Node(new_state, self.depth + 1, self)
                 children.append(child_node)
         return children
 
 
-    #da kommt noch mehr logik rein
 
 
 

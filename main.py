@@ -1,8 +1,12 @@
 import grid
-import Solver
-import HeuristicHamming
-import HeuristicManhattan
+from Solver import Solver
+from HeuristicHamming import HeuristicHamming
+from HeuristicManhattan import HeuristicManhattan
 from timeit import default_timer as timer
+
+from Puzzle import Puzzle
+from SolverAstar import SolverAstar
+
 
 def main():
     grid_goal = [[0, 1, 2], [3, 4, 5], [6, 7, 8]]
@@ -26,20 +30,25 @@ def main():
         print()
         # k += 1
 
+    puzzle = Puzzle(grid_goal, grid_goal)
     # solve the 100 puzzles with Hamming
+    solverHamming = SolverAstar(HeuristicHamming())
     startHamming = timer()
     for i in grid_list:
-        a = Solver(i, HeuristicHamming())
-        print('not working yet - Solver is not callable')
+        puzzle.start_state = i
+        a = solverHamming.solve(puzzle)
+        print(a)
     endHamming = timer()
     # also returns or get_len_nodes(because it's a class???) count of all nodes used (memory usage) and
     # deletes all nodes (in class SolverAstar)
 
     # solve the 100 puzzles with Manhattan
+    solverManhatten = SolverAstar(HeuristicManhattan())
     startManhattan = timer()
     for i in grid_list:
-        a = Solver(i, HeuristicManhattan())
-        print('not working yet - Solver is not callable')
+        puzzle.start_state = i
+        a = solverManhatten.solve(puzzle)
+        print(a)
     endManhattan = timer()
     # also returns or get_len_nodes(because it's a class???) count of all nodes used (memory usage) and
     # deletes all nodes (in class SolverAstar)
