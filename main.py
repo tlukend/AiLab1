@@ -98,11 +98,11 @@ def main():
 
     # calculation and printing of mean time for hamming
     mean_hamming = mean(runtime_list_hamming)
-    print('Mean time to solve Hamming is ' + mean_hamming)
+    print('Mean time to solve Hamming is ' + str(mean_hamming))
 
     # calculation and printing of mean time for manhattan
     mean_manhattan = mean(runtime_list_manhattan)
-    print('Mean time to solve Manhattan is ' + mean_manhattan)
+    print('Mean time to solve Manhattan is ' + str(mean_manhattan))
 
     # calculation of standard deviation time for hamming
     std_deviation_hamm = []
