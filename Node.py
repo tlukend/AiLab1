@@ -1,17 +1,29 @@
 import constants
+import grid
+from grid import swap_cells
 
 
 class Node:
     #The constructor accepts a 2 dimensional array in which the state of the grid is saved
     #If no parent is passed, parent is set to none
-    def __init__(self, state, total_cost, parent=None):
+    def __init__(self, state, depth, parent=None):
         self.state = state
-        self.total_cost = total_cost
+        self.depth = depth
         self.parent = parent
+        self.heuristic = 0
+
+    def total_costs(self):
+        return self.depth + self.heuristic
+
+    def __hash__(self):
+        return hash(str(self.state))
+
+    def __eq__(self, other):
+        return self.__class__ == other.__class__ and self.state == other.state
 
     @staticmethod
     def is_inside_grid(x, y):
-        return x < 0 or x > 2 or y < 0 or y > 2
+        return 0 <= x <= 2 and 0 <= y <= 2
 
     def get_number_at(self, x, y):
         if not self.is_inside_grid(x, y):
@@ -20,15 +32,10 @@ class Node:
             return self.state[x][y]
 
     def get_empty_tile(self):
-        for x in range(0, 2):
-            for y in range(0, 2):
+        for x in range(0, 3):
+            for y in range(0, 3):
                 if self.state[x][y] == 0:
                     return x, y
-
-    def swap_tiles(self, tile1, tile2):
-        temp = self.state[tile1[0]][tile1[1]]
-        self.state[tile1[0]][tile1[1]] = self.state[tile2[0]][tile2[1]]
-        self.state[tile2[0]][tile2[1]] = temp
 
     def generate_child_states(self):
         children = []
@@ -42,8 +49,12 @@ class Node:
             if not self.is_inside_grid(x, y):
                 continue
             else:
-                child_node = Node(self.state.copy(), self.total_cost, self)
-                child_node.swap_tiles(empty_tile, (x, y))
+                new_state = self.state.copy();
+                new_state[0] = new_state[0].copy();
+                new_state[1] = new_state[1].copy();
+                new_state[2] = new_state[2].copy();
+                swap_cells(new_state, empty_tile, (x, y))
+                child_node = Node(new_state, self.depth + 1, self)
                 children.append(child_node)
         return children
 
