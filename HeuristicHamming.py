@@ -1,8 +1,9 @@
 from Heuristic import Heuristic
 
+
 class HeuristicHamming(Heuristic):
-    def calculate(self, node, start, goal): #start is unneccessary or not?
-        #it counts the wrong states of the puzzle
+    def calculate(self, node, start, goal):  # start is unnecessary or not?
+        # it counts the wrong states of the puzzle
         # goes through the two-dimensional array
         hammingDistance = 0
         for i in range(0, 3):
@@ -12,6 +13,4 @@ class HeuristicHamming(Heuristic):
                     # we add +1 for the hammingDistance, because it rises the number of misplaced tiles except 0. which is not a tile
                     hammingDistance += 1
                     # return number of misplaced tiles as an integer
-                    return hammingDistance
-
-
+        return hammingDistance

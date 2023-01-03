@@ -15,7 +15,7 @@ class Node:
     # calculates the total costs for a node
     # f(n) = g(n) + h(n), f(n) = total_cost, g(n) = depth, h(n) = heuristic.calculate()
     def total_costs(self):
-        return self.depth + self.heuristic
+        return int(self.depth) + int(self.heuristic)
 
     # returns a hash table - Access time for datatype set is O(1)
     def __hash__(self):
