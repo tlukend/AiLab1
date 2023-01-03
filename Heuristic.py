@@ -1,4 +1,4 @@
-#inherits to manhattan and hemming
+#inherits to manhattan and hamming
 
 #Variables: countSteps, runtime(count), memoryEffort(numberOfNodes)
 

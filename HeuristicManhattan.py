@@ -9,8 +9,8 @@ class HeuristicManhattan (Heuristic):
     def findDistance(self, val, goal):
         x1 = y1 = 0
 
-        for i in range (0, 2):
-            for j in range (0, 2):
+        for i in range (0, 3):
+            for j in range (0, 3):
                 if goal[i][j] == val:
                     x1 = i
                     y1 = j
