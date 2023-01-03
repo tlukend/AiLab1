@@ -41,6 +41,4 @@ class SolverAstar(Solver):
 
 
 # f(n) = g(n) + h(n), f(n) = total_cost, g(n) = current_cost, h(n) = heuristic.calculate()
-# könnte heut noch fertig werden
-# und noch eine anmerkung:
-# solve könntest du beenden, wenn h == 0, weil wenn alles passt ist es gelöst - sicher weniger code als alles zu vergleichen
+
