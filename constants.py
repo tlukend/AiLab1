@@ -1,5 +1,5 @@
 
-#coordinates we are using for navigation (x, y)
+# coordinates we are using for navigation (x, y)
 UP = (0, 1)
 DOWN = (0, -1)
 LEFT = (-1, 0)

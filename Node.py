@@ -1,11 +1,10 @@
 import constants
-import grid
 from grid import swap_cells
 
 
 class Node:
-    #The constructor accepts a 2 dimensional array in which the state of the grid is saved
-    #If no parent is passed, parent is set to none
+    # The constructor accepts a 2 dimensional array in which the state of the grid is saved
+    # If no parent is passed, parent is set to none
     def __init__(self, state, depth, parent=None):
         self.state = state
         self.depth = depth
@@ -44,7 +43,7 @@ class Node:
                 if self.state[x][y] == 0:
                     return x, y
 
-    def generate_child_states(self):
+    def generate_child_states(self, counter_for_nodes):
         children = []
         # coordinates of the empty tiles
         empty_tile = self.get_empty_tile()
@@ -54,14 +53,18 @@ class Node:
             x = empty_tile[0]+direction[0]
             y = empty_tile[1]+direction[1]
             if not self.is_inside_grid(x, y):
-                #try the next direction
+                # try the next direction
                 continue
             else:
                 # copies the array using the python slicing operator ':'
                 new_state = [column[:] for column in self.state]
                 swap_cells(new_state, empty_tile, (x, y))
                 child_node = Node(new_state, self.depth + 1, self)
+                # TODO
+                counter_for_nodes += 1
                 children.append(child_node)
+                # TODO
+                counter_for_nodes += 1
         return children
 
  #   def createChild(self):

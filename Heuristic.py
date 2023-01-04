@@ -1,4 +1,4 @@
-#abstract class for Heuristic Hamming and Manhattan
+# abstract class for Heuristic Hamming and Manhattan
 class Heuristic:
-    def calculate(self, node, start, goal):
+    def calculate(self, node, goal):
         pass

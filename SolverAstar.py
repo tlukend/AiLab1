@@ -1,6 +1,6 @@
-import grid
 from Solver import Solver
 from Node import Node
+
 
 class SolverAstar(Solver):
     def __init__(self, heuristic):
@@ -14,12 +14,18 @@ class SolverAstar(Solver):
         closed_nodes_set = set()  # closed nodes is a visited and expanded node
         # start_node is our start_state puzzle and also uses the depth which is 0 at the beginning
         start_node = Node(puzzle.start_state, 0)
+        # TODO - damit counter bei jedem startNode mit 1 startet
+        puzzle.counter_for_nodes = 1
         # to calculate the costs with Manhattan or Hamming
-        start_node.heuristic = self.heuristic.calculate(start_node, puzzle.start_state, puzzle.grid_goal)
+        start_node.heuristic = self.heuristic.calculate(start_node, puzzle.grid_goal)
 
         # node is visited but not expanded - we give it in list and set
         open_nodes.append(start_node)
+        # TODO
+        puzzle.counter_for_nodes += 1
         open_nodes_set.add(start_node)
+        # TODO
+        puzzle.counter_for_nodes += 1
 
         """
         Just for Testing:
@@ -37,7 +43,9 @@ class SolverAstar(Solver):
                 return current_node
             else:
                 closed_nodes_set.add(current_node)
-                child_nodes = current_node.generate_child_states()
+                # TODO
+                puzzle.counter_for_nodes += 1
+                child_nodes = current_node.generate_child_states(puzzle.counter_for_nodes)
 
                 """
                 for testing
@@ -54,8 +62,10 @@ class SolverAstar(Solver):
                         continue
                     else:
                         # the child node is suitable and added to the open_nodes_set (therefore it is visited)
-                        child.heuristic = self.heuristic.calculate(child, puzzle.start_state, puzzle.grid_goal)
+                        child.heuristic = self.heuristic.calculate(child, puzzle.grid_goal)
                         open_nodes_set.add(child)
+                        # TODO
+                        puzzle.counter_for_nodes += 1
 
                         """
                         for testing
@@ -73,4 +83,6 @@ class SolverAstar(Solver):
                                 # position
                                 target_node_index += 1
                         open_nodes.insert(target_node_index, child)
+                        # TODO
+                        puzzle.counter_for_nodes += 1
         return "Unable to solve!"

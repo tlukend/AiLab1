@@ -12,7 +12,7 @@ class HeuristicManhattan(Heuristic):
                     return x, y
         return -1, -1
 
-    def calculate(self, node, start, goal):
+    def calculate(self, node, goal):
         total_h = 0
         for x in range(0, 3):
             for y in range(0, 3):
@@ -23,6 +23,6 @@ class HeuristicManhattan(Heuristic):
                 total_h += abs(x_goal - x) + abs(y_goal - y)
         """
         for testing:
+        print('Total h: ' + str(total_h))
         """
-        # print('Total h: ' + str(total_h))
         return int(total_h)

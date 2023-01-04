@@ -31,7 +31,8 @@ def print_grid(array):
     :param: array: array in the format [[4, 0, 8],[2, 1, 7],[3, 6, 5]]
     :return: print()
     """
-    # Christina changed to first for x und seccond for y -> if we change it back also change main grid_goal and check_solvability
+    # Christina changed to first for x und seccond for y -> if we change it back also change main grid_goal and
+    # check_solvability
     for x in range(0, 3):
         for y in range(0, 3):
             print(str(array[x][y]) + " ", end="")
@@ -46,11 +47,13 @@ def check_solvability(array):
     new grid; If the puzzle is solvable the functions returns False and in create_random_grid() it leaves the loop
     """
 
-    # reference: https://www.youtube.com/watch?v=bhmCmbj9VAg and https://www.geeksforgeeks.org/check-instance-8-puzzle-solvable/
+    # reference: https://www.youtube.com/watch?v=bhmCmbj9VAg and
+    # https://www.geeksforgeeks.org/check-instance-8-puzzle-solvable/
     # 9! possible initial states but only half of these are solvable -> (9!)/2 initial states are solvable)
     # check solvability with inversion count - even: solvable; odd: not solvable
     # It is not possible to solve an instance of 8 puzzle if number of inversions is odd in the input state.
-    # In the goal state, there are 0 inversions. So we can reach goal state only from a state which has even inversion count.
+    # In the goal state, there are 0 inversions. So we can reach goal state only from a state which has even
+    # inversion count.
 
     inversion_count = 0
     # converted the 2 dimension array into 1 dimension array because it's easier for doing the inversion count
