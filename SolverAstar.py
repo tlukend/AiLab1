@@ -11,7 +11,7 @@ class SolverAstar(Solver):
         open_nodes = []
         # set() to have access time O(1)
         open_nodes_set = set()
-        closed_nodes_set = set() # closed nodes is a visited and expanded node
+        closed_nodes_set = set()  # closed nodes is a visited and expanded node
         # start_node is our start_state puzzle and also uses the depth which is 0 at the beginning
         start_node = Node(puzzle.start_state, 0)
         # to calculate the costs with Manhattan or Hamming

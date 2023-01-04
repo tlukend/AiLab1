@@ -1,4 +1,5 @@
 import grid
+from Node import Node
 from Solver import Solver
 from HeuristicHamming import HeuristicHamming
 from HeuristicManhattan import HeuristicManhattan
@@ -18,6 +19,7 @@ def main():
 
     grid_list = []
     runtime_list_hamming = []
+    # Es wird nirgendwo etwas in runtime list manhattan eingefügt?
     runtime_list_manhattan = []
 
     # creates a list of 100 random grids
@@ -25,6 +27,7 @@ def main():
     for i in range(1):
         grid_list.append(grid.create_random_grid())
     end_creating_grid = timer()
+
 
     print('Creating ' + str(len(grid_list)) + ' puzzles takes ' + str(end_creating_grid - start_creating_grid)
           + ' seconds.')
@@ -57,6 +60,7 @@ def main():
 
         # calculate and save runtime for each puzzle (for mean and standard deviation)
         end_single_hamming = timer()
+        # Falsch? End minus start wäre richtig?
         runtime_list_hamming.append(start_single_hamming - end_single_hamming)
 
     end_hamming = timer()

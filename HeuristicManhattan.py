@@ -5,27 +5,24 @@ class HeuristicManhattan(Heuristic):
     # Variables: countSteps, runtime(count), memoryEffort(numberOfNodes)
     # stillNotDone
 
-    def find_distance(self, current, goal):
-        x1 = y1 = 0
-        for i in range(0, 3):
-            for j in range(0, 3):
-                if goal[i][j] == current:
-                    x1 = i
-                    y1 = j
-                    break
-        return x1, y1
+    def find_tile_position(self, grid, tile):
+        for x in range(0, 3):
+            for y in range(0, 3):
+                if grid[x][y] == tile:
+                    return x, y
+        return -1, -1
 
-    def calculate(self, node, current, goal):
+    def calculate(self, node, start, goal):
         total_h = 0
-        x1 = x2 = y1 = y2 = 0
-        for i in range(0, 3):
-            for j in range(0, 3):
-                x1, y1 = self.find_distance(node.state[i][j], goal)
-                x2, y2 = i, j
-                tilesteps = abs(x1 - x2) + abs(y1 - y2)
-                total_h += tilesteps
+        for x in range(0, 3):
+            for y in range(0, 3):
+                tile = node.state[x][y]
+                if tile == 0:
+                    continue
+                x_goal, y_goal = self.find_tile_position(goal, tile)
+                total_h += abs(x_goal - x) + abs(y_goal - y)
         """
         for testing:
         """
-        print('Total h: ' + str(total_h))
+        # print('Total h: ' + str(total_h))
         return int(total_h)
