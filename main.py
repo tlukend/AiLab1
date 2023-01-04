@@ -72,7 +72,7 @@ def main():
         print("Depth of the tree to solve this puzzle: " + str(a.depth))
 
         all_nodes_hamming += len_open_nodes
-        print("This puzzle needed " + str(len_open_nodes) + " nodes to be created.\n")
+        print("This puzzle needs to create " + str(len_open_nodes) + " expanded nodes.\n")
 
     end_hamming = timer()
 
@@ -106,7 +106,7 @@ def main():
         print("Depth of the tree to solve the puzzle: " + str(a.depth))
 
         all_nodes_manhattan += len_open_nodes
-        print("This puzzle needed " + str(len_open_nodes) + " nodes to be created.\n")
+        print("This puzzle needs to create " + str(len_open_nodes) + " expanded nodes.\n")
 
     end_manhattan = timer()
 
@@ -118,13 +118,13 @@ def main():
     #  child_node, children
     # Measure memory effort (number of nodes expanded) and run time for each of 100 random states and each heuristics
     print("\n################\n# Memory Usage #\n################\n")
-    print("The following nodes are counted: start_node, open_nodes, open_nodes_set, closed_nodes_set, "
+    print("The following nodes are counted: closed_nodes (expanded nodes) "
           "child_node, children; \n")
     print("Hamming needs for " + str(len(grid_list)) + " puzzles " + str(all_nodes_hamming)
-          + " nodes to be created.")
+          + " expanded nodes.")
 
     print("Manhattan needs for " + str(len(grid_list)) + " puzzles " + str(all_nodes_manhattan)
-          + " nodes to be created.")
+          + " expanded nodes.")
 
     # TODO: Computation Time
     # reference https://www.programiz.com/python-programming/examples/elapsed-time

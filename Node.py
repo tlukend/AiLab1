@@ -27,19 +27,24 @@ class Node:
     def __eq__(self, other):
         return self.__class__ == other.__class__ and self.state == other.state
 
-    # to check if children are inside grid
     @staticmethod
     def is_inside_grid(x, y):
         """
-        checks if the position (if we move the empty tile) is
-        :param x:
-        :param y:
-        :return:
+        checks if the position (if we move the empty tile) is inside the grid
+        :param x: x coordinate (of array) -> can be between 0 and 2
+        :param y: x coordinate (of array) -> can be between 0 and 2
+        :return: True if grid is inside - False if grid is not inside and x or y > 2 is
         """
         return 0 <= x <= 2 and 0 <= y <= 2
 
     # to get the number of a position -> returns value only if x and y are really in the grid 3 x 3
     def get_number_at(self, x, y):
+        """
+        this functions is in use when we need
+        :param x:
+        :param y:
+        :return:
+        """
         if not self.is_inside_grid(x, y):
             return None
         else:
