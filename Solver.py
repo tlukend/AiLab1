@@ -1,4 +1,5 @@
-# abstract class - if we want to solve the puzzle with different algorithms: like A*
+"""Abstract class - if we want to solve the puzzle with different algorithms than A-Star. SolverAstar inherits from
+Solver. In Solver the solver function is defined. """
 class Solver:
     def solve(self, puzzle):
         """

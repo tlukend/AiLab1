@@ -1,10 +1,10 @@
 from Solver import Solver
 from Node import Node
 
-"""The SolverAstar class contains the solve function, which takes a random start state from puzzle and returns the 
-goal state. This is where the A-Star algorithm is implemented. A Object of SolverAstar takes a heuristic as input 
-parameter. This can be the hamming or the manhattan heuristic. Thanks to the modular design the SolverAstar can use 
-any given heuristic. """
+"""Inherits from Solver. The SolverAstar class contains the solve function, which takes a random start state from 
+puzzle and returns the goal state. This is where the A-Star algorithm is implemented. A Object of SolverAstar takes a 
+heuristic as input parameter. This can be the hamming or the manhattan heuristic. Thanks to the modular design the 
+SolverAstar can use any given heuristic. """
 
 
 class SolverAstar(Solver):
