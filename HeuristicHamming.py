@@ -3,8 +3,13 @@ from Heuristic import Heuristic
 
 class HeuristicHamming(Heuristic):
     def calculate(self, node, goal):
-        # it counts the wrong states of the puzzle
-        # goes through the two-dimensional array
+        """
+        The calculate function figures out the amount of misplaced tiles within the given node by going through the
+        two-dimensional array of tiles and comparing them with the goal state tiles
+        :param node: the (child-)node needed for this calculation
+        :param goal: the goal state needed to be compared with the node
+        :return: the function returns an integer of the amount of misplaced tiles
+        """
         hamming_distance = 0
         for i in range(0, 3):
             for j in range(0, 3):
