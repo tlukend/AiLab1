@@ -75,13 +75,10 @@ def check_solvability(array):
                     inversion_count += 1
     # check if odd or even
     if (inversion_count % 2) == 0:
-        # print('Puzzle is solvable')
-        # print('Inversion Count: ' + str(inversion_count))
         # return false to stop the while loop in create_random_grid()
         return False
     else:
-        # print('Puzzle is NOT solvable: ' + str(print_grid(array)))
-        # print('Inversion Count: ' + str(inversion_count))
+        # returns True to stay in while loop ... because inversion count is odd
         return True
 
 

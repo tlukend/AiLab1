@@ -63,7 +63,6 @@ def main():
         print('\nThis is the return (current state) if the puzzle is solved:')
         grid.print_grid(a.state)
 
-        # print('Is return (current state) the same as goal_state? ' + str(a.state == grid_goal))
         if a.state != grid_goal:
             print('\n!!!!Puzzle not solved!!!\n')
 
@@ -96,7 +95,6 @@ def main():
         print('\nThis is the return (current state) if the puzzle is solved:')
         grid.print_grid(a.state)
 
-        # print('Is return (current state) the same as goal_state? ' + str(a.state == grid_goal))
         if a.state != grid_goal:
             print('\n!!!!Puzzle not solved!!!\n')
 
@@ -162,6 +160,3 @@ def main():
 if __name__ == "__main__":
     main()
 
-# puzzle = new puzzle()
-# solver = new solverAstar(heuristichamming)
-# solver.solve(puzzle)
