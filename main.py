@@ -9,6 +9,13 @@ from SolverAstar import SolverAstar
 
 
 def main():
+    """
+    In the main the static goal_grid is created,
+    the memory effort and execution time of each heuristic is calculated,
+    100 grids are created and solved using Hamming and Manhattan
+    and finally it prints all these information
+    :return: nothing
+    """
     grid_goal = [[0, 1, 2], [3, 4, 5], [6, 7, 8]]
 
     print('\n################\n#   8-PUZZLE   #'

@@ -8,7 +8,7 @@ class HeuristicManhattan(Heuristic):
     """
     def find_tile_position(self, grid, tile):
         """
-
+        finds the position of the empty tile (x, y)
         :param grid: goal state used to compare with:
         :param tile:value of tile
         :return: if the value of the tile is the same as the value in the grid, return the coordinates
