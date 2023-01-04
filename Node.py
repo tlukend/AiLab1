@@ -43,7 +43,7 @@ class Node:
                 if self.state[x][y] == 0:
                     return x, y
 
-    def generate_child_states(self, counter_for_nodes):
+    def generate_child_states(self):
         children = []
         # coordinates of the empty tiles
         empty_tile = self.get_empty_tile()
@@ -60,11 +60,7 @@ class Node:
                 new_state = [column[:] for column in self.state]
                 swap_cells(new_state, empty_tile, (x, y))
                 child_node = Node(new_state, self.depth + 1, self)
-                # TODO
-                counter_for_nodes += 1
                 children.append(child_node)
-                # TODO
-                counter_for_nodes += 1
         return children
 
  #   def createChild(self):

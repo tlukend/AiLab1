@@ -39,29 +39,21 @@ def main():
     print('\nCreating ' + str(len(grid_list)) + ' puzzles takes ' + str(end_creating_grid - start_creating_grid)
           + ' seconds.\n')
 
-    # print(str(len(grid_list)) + ' grids are created: \n')
-    # k = 1
-    # for i in grid_list:
-    # print("Grid number " + str(k) + ":")
-    # grid.print_grid(i)
-    # print()
-    # k += 1
-
     print('############################################\n# Solving 8-Puzzle using Hamming Heuristic #'
           '\n############################################\n')
 
-    puzzle = Puzzle(grid_goal, grid_goal, 0)
+    puzzle = Puzzle(grid_goal, grid_goal)
     # solve the 100 puzzles with Hamming
     start_hamming = timer()
     solver_hamming = SolverAstar(HeuristicHamming())
-    counter = 1
+    grid_counter = 1
     for i in grid_list:
         start_single_hamming = timer()
         puzzle.start_state = i
-        print('[' + str(counter) + ']' + ' Puzzle start_state: ')
-        counter += 1
+        print('[' + str(grid_counter) + ']' + ' Puzzle start_state: ')
+        grid_counter += 1
         grid.print_grid(puzzle.start_state)
-        a = solver_hamming.solve(puzzle)
+        a, len_open_nodes = solver_hamming.solve(puzzle)
 
         # calculate and save runtime for each puzzle (for mean and standard deviation)
         end_single_hamming = timer()
@@ -78,8 +70,8 @@ def main():
         # print depth
         print("Depth of the tree to solve this puzzle: " + str(a.depth))
 
-        all_nodes_hamming += puzzle.counter_for_nodes
-        print("This puzzle needed " + str(puzzle.counter_for_nodes) + " nodes to be created.\n")
+        all_nodes_hamming += len_open_nodes
+        print("This puzzle needed " + str(len_open_nodes) + " nodes to be created.\n")
 
     end_hamming = timer()
 
@@ -88,14 +80,14 @@ def main():
     # solve the 100 puzzles with Manhattan
     start_manhattan = timer()
     solver_manhattan = SolverAstar(HeuristicManhattan())
-    counter = 1
+    grid_counter = 1
     for i in grid_list:
         start_single_manhattan = timer()
         puzzle.start_state = i
-        print('[' + str(counter) + ']' + ' Puzzle start_state: ')
-        counter += 1
+        print('[' + str(grid_counter) + ']' + ' Puzzle start_state: ')
+        grid_counter += 1
         grid.print_grid(puzzle.start_state)
-        a = solver_manhattan.solve(puzzle)
+        a, len_open_nodes = solver_manhattan.solve(puzzle)
 
         end_single_manhattan = timer()
         # TODO: Falsch? End minus start wäre richtig?
@@ -111,8 +103,8 @@ def main():
         # print depth
         print("Depth of the tree to solve the puzzle: " + str(a.depth))
 
-        all_nodes_manhattan += puzzle.counter_for_nodes
-        print("This puzzle needed " + str(puzzle.counter_for_nodes) + " nodes to be created.\n")
+        all_nodes_manhattan += len_open_nodes
+        print("This puzzle needed " + str(len_open_nodes) + " nodes to be created.\n")
 
     end_manhattan = timer()
 
