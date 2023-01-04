@@ -1,4 +1,4 @@
-import grid
+import Grid
 from HeuristicHamming import HeuristicHamming
 from HeuristicManhattan import HeuristicManhattan
 from timeit import default_timer as timer
@@ -21,7 +21,7 @@ def main():
     print('\n################\n#   8-PUZZLE   #'
           '\n################\n')
     print('Goal State: ')
-    grid.print_grid(grid_goal)
+    Grid.print_grid(grid_goal)
 
     all_nodes_hamming = 0
     all_nodes_manhattan = 0
@@ -32,7 +32,7 @@ def main():
     # creates a list of 100 random grids
     start_creating_grid = timer()
     for i in range(3):
-        grid_list.append(grid.create_random_grid())
+        grid_list.append(Grid.create_random_grid())
     end_creating_grid = timer()
 
     print('\nCreating ' + str(len(grid_list)) + ' puzzles takes ' + str(end_creating_grid - start_creating_grid)
@@ -50,7 +50,7 @@ def main():
         puzzle.start_state = i
         print('[' + str(grid_counter) + ']' + ' Puzzle start_state: ')
         grid_counter += 1
-        grid.print_grid(puzzle.start_state)
+        Grid.print_grid(puzzle.start_state)
 
         start_single_hamming = timer()
 
@@ -58,11 +58,10 @@ def main():
 
         # calculate and save runtime for each puzzle (for mean and standard deviation)
         end_single_hamming = timer()
-        # TODO: Falsch? End minus start wäre richtig?
         runtime_list_hamming.append(end_single_hamming - start_single_hamming)
 
         print('\nThis is the return (current state) if the puzzle is solved:')
-        grid.print_grid(a.state)
+        Grid.print_grid(a.state)
 
         if a.state != grid_goal:
             print('\n!!!!Puzzle not solved!!!\n')
@@ -85,7 +84,7 @@ def main():
         puzzle.start_state = i
         print('[' + str(grid_counter) + ']' + ' Puzzle start_state: ')
         grid_counter += 1
-        grid.print_grid(puzzle.start_state)
+        Grid.print_grid(puzzle.start_state)
 
         start_single_manhattan = timer()
 
@@ -95,7 +94,7 @@ def main():
         runtime_list_manhattan.append(end_single_manhattan - start_single_manhattan)
 
         print('\nThis is the return (current state) if the puzzle is solved:')
-        grid.print_grid(a.state)
+        Grid.print_grid(a.state)
 
         if a.state != grid_goal:
             print('\n!!!!Puzzle not solved!!!\n')
@@ -111,10 +110,9 @@ def main():
     # also returns or get_len_nodes(because it's a class???) count of all nodes used (memory usage) and
     # deletes all nodes (in class SolverAstar)
 
-    # TODO: Memory Usage (number of expanded nodes in the search tree)
-    # TODO: es sind jetzt folgende nodes enthalten: start_node, open_nodes, open_nodes_set, closed_nodes_set,
-    #  child_node, children
-    # Measure memory effort (number of nodes expanded) and run time for each of 100 random states and each heuristics
+    # Memory Usage (number of expanded nodes in the search tree)
+    # contains the following nodes: start_node, open_nodes, open_nodes_set, closed_nodes_set, child_node, children
+    # Measure memory effort (number of nodes expanded) and run time for each of 100 random states and each heuristic
     print("\n################\n# Memory Usage #\n################\n")
     print("The following nodes are counted: closed_nodes (expanded nodes) "
           "child_node, children; \n")
@@ -124,7 +122,7 @@ def main():
     print("Manhattan needs for " + str(len(grid_list)) + " puzzles " + str(all_nodes_manhattan)
           + " expanded nodes.")
 
-    # TODO: Computation Time
+    # Computation Time
     # reference https://www.programiz.com/python-programming/examples/elapsed-time
     # timeit provides the most accurate results.
     print('\n####################\n# Computation Time #\n####################\n')
@@ -134,7 +132,7 @@ def main():
         'Manhattan took for ' + str(len(grid_list)) + ' Puzzles ' + str(end_manhattan - start_manhattan) + ' seconds.')
 
     # calculation of total computation time for Hamming plus Manhattan
-    total_time = 0
+    total_time = 0.0
     ham_time_count = 0
     man_time_count = 0
     while ham_time_count < len(runtime_list_hamming):
@@ -148,7 +146,7 @@ def main():
     print('\n--------------------------------------------\nTotal computation time : ' + str(total_time) +
           '\n--------------------------------------------\n')
 
-    # TODO: Provide mean and standard deviation of memory usage and execution time for each heuristics
+    # Provide mean and standard deviation of memory usage and execution time for each heuristic
     # calculation and printing of mean for Hamming-time
     mean_hamming = mean(runtime_list_hamming)
     print('\n###############################\n# Mean and standard deviation #\n###############################\n')
@@ -160,17 +158,17 @@ def main():
     ham_stddev_counter = 0
     for i in runtime_list_hamming:
         std_deviation_ham.append(abs(runtime_list_hamming[ham_stddev_counter] - mean_hamming))
-        print('Puzzle ' + str(ham_stddev_counter) + ': ' + str(std_deviation_ham[ham_stddev_counter]))
+        print('Puzzle ' + str(ham_stddev_counter + 1) + ': ' + str(std_deviation_ham[ham_stddev_counter]))
         ham_stddev_counter += 1
 
     # printing list of Hamming-times
     ham_runtime_counter = 0
     print('\nRuntime list for Hamming-times:')
     for i in runtime_list_hamming:
-        print('Puzzle ' + str(ham_runtime_counter) + ': ' + str(runtime_list_hamming[ham_runtime_counter]))
+        print('Puzzle ' + str(ham_runtime_counter + 1) + ': ' + str(runtime_list_hamming[ham_runtime_counter]))
         ham_runtime_counter += 1
 
-    print('\n-------------------------------------\n')
+    print('\n-----------------')
     # calculation and printing of mean Manhattan-time
     mean_manhattan = mean(runtime_list_manhattan)
     print('\nMean time to solve Manhattan is ' + str(mean_manhattan) + ' seconds.')
@@ -181,17 +179,17 @@ def main():
     man_stddev_counter = 0
     for i in runtime_list_manhattan:
         std_deviation_man.append(abs(runtime_list_manhattan[man_stddev_counter] - mean_manhattan))
-        print('Puzzle ' + str(man_stddev_counter) + ' Manhattan-time: ' + str(std_deviation_man[man_stddev_counter]))
+        print(
+            'Puzzle ' + str(man_stddev_counter + 1) + ' Manhattan-time: ' + str(std_deviation_man[man_stddev_counter]))
         man_stddev_counter += 1
 
     # printing list of Manhattan-times
     man_runtime_counter = 0
     print('\nRuntime list for Manhattan-times:')
     for i in runtime_list_manhattan:
-        print('Puzzle ' + str(man_runtime_counter) + ': ' + str(runtime_list_manhattan[man_runtime_counter]))
+        print('Puzzle ' + str(man_runtime_counter + 1) + ': ' + str(runtime_list_manhattan[man_runtime_counter]))
         man_runtime_counter += 1
 
 
 if __name__ == "__main__":
     main()
-
