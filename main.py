@@ -48,11 +48,13 @@ def main():
     solver_hamming = SolverAstar(HeuristicHamming())
     grid_counter = 1
     for i in grid_list:
-        start_single_hamming = timer()
         puzzle.start_state = i
         print('[' + str(grid_counter) + ']' + ' Puzzle start_state: ')
         grid_counter += 1
         grid.print_grid(puzzle.start_state)
+
+        start_single_hamming = timer()
+
         a, len_open_nodes = solver_hamming.solve(puzzle)
 
         # calculate and save runtime for each puzzle (for mean and standard deviation)
@@ -81,11 +83,13 @@ def main():
     solver_manhattan = SolverAstar(HeuristicManhattan())
     grid_counter = 1
     for i in grid_list:
-        start_single_manhattan = timer()
         puzzle.start_state = i
         print('[' + str(grid_counter) + ']' + ' Puzzle start_state: ')
         grid_counter += 1
         grid.print_grid(puzzle.start_state)
+
+        start_single_manhattan = timer()
+
         a, len_open_nodes = solver_manhattan.solve(puzzle)
 
         end_single_manhattan = timer()

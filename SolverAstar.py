@@ -64,7 +64,7 @@ class SolverAstar(Solver):
                         print(child.total_costs())
                         """
 
-                        # position for the child node
+                        # position for the child node - sorts the list - unexpensivest one on index 0
                         target_node_index = 0
                         for node in open_nodes:
                             if node.total_costs() > child.total_costs():

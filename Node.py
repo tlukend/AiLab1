@@ -11,9 +11,12 @@ class Node:
         self.parent = parent
         self.heuristic = 0
 
-    # calculates the total costs for a node
-    # f(n) = g(n) + h(n), f(n) = total_cost, g(n) = depth, h(n) = heuristic.calculate()
     def total_costs(self):
+        """
+        calculates the total costs for a node
+        no input parameters
+        :return: the total costs: f(n) = g(n) + h(n), f(n) = total_cost, g(n) = depth, h(n) = heuristic.calculate()
+        """
         return int(self.depth) + int(self.heuristic)
 
     # returns a hash table - Access time for datatype set is O(1)
@@ -27,6 +30,12 @@ class Node:
     # to check if children are inside grid
     @staticmethod
     def is_inside_grid(x, y):
+        """
+        checks if the position (if we move the empty tile) is
+        :param x:
+        :param y:
+        :return:
+        """
         return 0 <= x <= 2 and 0 <= y <= 2
 
     # to get the number of a position -> returns value only if x and y are really in the grid 3 x 3
