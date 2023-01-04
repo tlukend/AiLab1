@@ -34,9 +34,13 @@ def print_grid(array):
     # Christina changed to first for x und seccond for y -> if we change it back also change main grid_goal and
     # check_solvability
     for x in range(0, 3):
+        print(' +---+---+---+')
         for y in range(0, 3):
-            print(str(array[x][y]) + " ", end="")
+            if y == 2:
+                print(' | ' + str(array[x][y]) + " |", end="")
+            else:print(' | ' + str(array[x][y]), end="")
         print()
+    print(' +---+---+---+')
 
 
 def check_solvability(array):

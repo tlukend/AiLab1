@@ -11,8 +11,8 @@ from SolverAstar import SolverAstar
 def main():
     grid_goal = [[0, 1, 2], [3, 4, 5], [6, 7, 8]]
 
-    print('\n############\n# 8-PUZZLE #'
-          '\n############\n')
+    print('\n################\n#   8-PUZZLE   #'
+          '\n################\n')
     print('Goal State: ')
     grid.print_grid(grid_goal)
 
@@ -25,7 +25,7 @@ def main():
 
     # creates a list of 100 random grids
     start_creating_grid = timer()
-    for i in range(2):
+    for i in range(3):
         grid_list.append(grid.create_random_grid())
     end_creating_grid = timer()
 
@@ -59,7 +59,7 @@ def main():
         # calculate and save runtime for each puzzle (for mean and standard deviation)
         end_single_hamming = timer()
         # TODO: Falsch? End minus start wäre richtig?
-        runtime_list_hamming.append(start_single_hamming - end_single_hamming)
+        runtime_list_hamming.append(end_single_hamming - start_single_hamming)
 
         print('\nThis is the return (current state) if the puzzle is solved:')
         grid.print_grid(a.state)
@@ -69,7 +69,7 @@ def main():
             print('\n!!!!Puzzle not solved!!!\n')
 
         # print depth
-        print("Depth of the tree (how many child nodes needed) to solve the puzzle: " + str(a.depth))
+        print("Depth of the tree to solve this puzzle: " + str(a.depth))
 
         all_nodes_hamming += puzzle.counter_for_nodes
         print("This puzzle needed " + str(puzzle.counter_for_nodes) + " nodes to be created.\n")
@@ -92,7 +92,7 @@ def main():
 
         end_single_manhattan = timer()
         # TODO: Falsch? End minus start wäre richtig?
-        runtime_list_manhattan.append(start_single_manhattan - end_single_manhattan)
+        runtime_list_manhattan.append(end_single_manhattan - start_single_manhattan)
 
         print('\nThis is the return (current state) if the puzzle is solved:')
         grid.print_grid(a.state)
@@ -102,7 +102,7 @@ def main():
             print('\n!!!!Puzzle not solved!!!\n')
 
         # print depth
-        print("Depth of the tree (how many child nodes needed) to solve the puzzle: " + str(a.depth))
+        print("Depth of the tree to solve the puzzle: " + str(a.depth))
 
         all_nodes_manhattan += puzzle.counter_for_nodes
         print("This puzzle needed " + str(puzzle.counter_for_nodes) + " nodes to be created.\n")
@@ -118,7 +118,7 @@ def main():
     # Measure memory effort (number of nodes expanded) and run time for each of 100 random states and each heuristics
     print("\n################\n# Memory Usage #\n################\n")
     print("The following nodes are counted: start_node, open_nodes, open_nodes_set, closed_nodes_set, "
-          "child_node, children \n")
+          "child_node, children; \n")
     print("Hamming needs for " + str(len(grid_list)) + " puzzles " + str(all_nodes_hamming)
           + " nodes to be created.")
 
@@ -129,21 +129,21 @@ def main():
     # reference https://www.programiz.com/python-programming/examples/elapsed-time
     # timeit provides the most accurate results.
     print('\n####################\n# Computation Time #\n####################\n')
-    print('Hamming took for ' + str(len(grid_list)) + ' Puzzles : ' + str(end_hamming - start_hamming) + ' seconds')
+    print('Hamming took for ' + str(len(grid_list)) + ' Puzzles ' + str(end_hamming - start_hamming) + ' seconds.')
 
     print(
-        'Manhattan took for ' + str(len(grid_list)) + ' Puzzles : ' + str(end_manhattan - start_manhattan) + ' seconds')
+        'Manhattan took for ' + str(len(grid_list)) + ' Puzzles ' + str(end_manhattan - start_manhattan) + ' seconds.')
 
     # TODO: Provide mean and standard deviation of memory usage and execution time for each heuristics
 
     # calculation and printing of mean time for hamming
     mean_hamming = mean(runtime_list_hamming)
     print('\n###############################\n# Mean and standard deviation #\n###############################\n')
-    print('Mean time to solve Hamming is ' + str(abs(mean_hamming)))
+    print('Mean time to solve Hamming is ' + str(mean_hamming) + ' seconds.')
 
     # calculation and printing of mean time for manhattan
     mean_manhattan = mean(runtime_list_manhattan)
-    print('Mean time to solve Manhattan is ' + str(abs(mean_manhattan)))
+    print('Mean time to solve Manhattan is ' + str(mean_manhattan) + ' seconds.')
 
     # calculation of standard deviation time for hamming
     std_deviation_hamm = []
