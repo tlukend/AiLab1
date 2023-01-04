@@ -1,5 +1,5 @@
-import constants
-from grid import swap_cells
+import Constants
+from Grid import swap_cells
 
 
 class Node:
@@ -71,7 +71,7 @@ class Node:
         # coordinates of the empty tiles
         empty_tile = self.get_empty_tile()
         # child states are generated - for each direction
-        for direction in constants.DIRECTIONS:
+        for direction in Constants.DIRECTIONS:
             # vector addition to get the new grid which we can move
             x = empty_tile[0]+direction[0]
             y = empty_tile[1]+direction[1]
