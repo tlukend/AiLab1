@@ -1,0 +1,93 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+Solver <|-- SolverAstar
+Node <-right- Constants
+Main <--- Puzzle
+Main <-- Grid
+Main <-- SolverAstar
+Main <-- HeuristicManhattan
+Main <-- HeuristicHamming
+
+SolverAstar <-- Node
+
+
+
+class Main {
+    grid_goal[][]
+    several counters : int
+    several timers : timer
+
+    main()
+}
+
+class Constants {
+    UP
+    DOWN
+    LEFT
+    RIGHT
+    DIRECTIONS
+}
+
+class Grid {
+    array[][]
+    inversion_count : int
+
+    create_random_grid()
+    print_grid(array)
+    check_solvability(array)
+    swap_cells(grid, cell1, cell2):
+}
+
+abstract class Heuristic {
+    calculate(self, node, goal)
+}
+
+class HeuristicHamming extends Heuristic {
+    hamming_distance : int
+
+    calculate(self, node, goal)
+}
+
+class HeuristicManhattan extends Heuristic {
+    total_h : int
+
+    find_tile_position(self, grid, tile)
+    calculate(self, node, goal)
+}
+
+class Node {
+    children[]
+    empty_tile : tuple
+
+    __init__(self, state, depth, parent=None)
+    total_costs(self)
+    __hash__(self)
+    is_inside_grid(x, y)
+    get_number_at(self, x, y)
+    get_empty_tile(self)
+    generate_child_states(self)
+}
+
+class Puzzle {
+    __init__(self, start_state, grid_goal)
+}
+
+abstract class Solver {
+    solve(self, puzzle)
+}
+
+class SolverAstar {
+    open_nodes[]
+    open_nodes_set : set()
+    closed_nodes_set : set()
+    start_node : Node
+    current_node : Node
+
+    __init__(self, heuristic)
+    solve(self, puzzle)
+}
+
+
+
+@enduml
