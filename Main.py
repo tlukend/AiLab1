@@ -31,7 +31,7 @@ def main():
 
     # creates a list of 100 random grids
     start_creating_grid = timer()
-    for i in range(3):
+    for i in range(100):
         grid_list.append(Grid.create_random_grid())
     end_creating_grid = timer()
 

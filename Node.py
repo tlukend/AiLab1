@@ -3,29 +3,67 @@ from Grid import swap_cells
 
 
 class Node:
-    # The constructor accepts a 2 dimensional array in which the state of the grid is saved
-    # If no parent is passed, parent is set to none
+    """The constructor accepts a 2 dimensional array in which the state of the grid is saved
+     If no parent is passed, parent is set to none
+     """
     def __init__(self, state, depth, parent=None):
         self.state = state
         self.depth = depth
         self.parent = parent
         self.heuristic = 0
+        self.total_cost = depth
+        self.hash = 0
+        self.calculate_hash()
 
-    def total_costs(self):
+    """To generate a unique number for the builtin hash function"""
+    def calculate_hash(self):
+        self.hash = 0
+        i = 0
+        for column in self.state:
+            for number in column:
+                """Xor operation. We use bit shifting: number is shifted by three bits to 
+                the left """
+                self.hash ^= number << (3 * i)
+                i += 1
+
+    def update_heuristic(self, heuristic):
+        self.heuristic = heuristic
         """
         calculates the total costs for a node
         no input parameters
         :return: the total costs: f(n) = g(n) + h(n), f(n) = total_cost, g(n) = depth, h(n) = heuristic.calculate()
         """
-        return int(self.depth) + int(self.heuristic)
+        self.total_cost = self.depth + self.heuristic
 
-    # returns a hash table - Access time for datatype set is O(1)
+    """We override the builtin hash function, to return our own generated hash. We will need this for the set - 
+    access time for datatype set is O(1) """
     def __hash__(self):
-        return hash(str(self.state))
+        return self.hash
 
-    # compares two objects/states by there values
+    """compares two objects/states by there values. The function was optimized with loop unrolling. Instead looping 
+    we manually compare the cells """
     def __eq__(self, other):
-        return self.__class__ == other.__class__ and self.state == other.state
+        if self.__class__ != other.__class__:
+            return False
+        if self.state[0][0] != other.state[0][0]:
+            return False
+        if self.state[0][1] != other.state[0][1]:
+            return False
+        if self.state[0][2] != other.state[0][2]:
+            return False
+        if self.state[1][0] != other.state[1][0]:
+            return False
+        if self.state[1][1] != other.state[1][1]:
+            return False
+        if self.state[1][2] != other.state[1][2]:
+            return False
+        if self.state[2][0] != other.state[2][0]:
+            return False
+        if self.state[2][1] != other.state[2][1]:
+            return False
+        if self.state[2][2] != other.state[2][2]:
+            return False
+        return True
 
     @staticmethod
     def is_inside_grid(x, y):

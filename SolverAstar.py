@@ -2,7 +2,7 @@ from Solver import Solver
 from Node import Node
 
 """Inherits from Solver. The SolverAstar class contains the solve function, which takes a random start state from 
-puzzle and returns the goal state. This is where the A-Star algorithm is implemented. A Object of SolverAstar takes a 
+puzzle and returns the node with the goal state. This is where the A-Star algorithm is implemented. A Object of SolverAstar takes a 
 heuristic as input parameter. This can be the hamming or the manhattan heuristic. Thanks to the modular design the 
 SolverAstar can use any given heuristic. """
 
@@ -35,7 +35,7 @@ class SolverAstar(Solver):
         """
         to calculate the costs with Manhattan or Hamming
         """
-        start_node.heuristic = self.heuristic.calculate(start_node, puzzle.grid_goal)
+        start_node.update_heuristic(self.heuristic.calculate(start_node, puzzle.grid_goal))
         """
         node is visited but not expanded - we give it in list and set
         """
@@ -83,7 +83,7 @@ class SolverAstar(Solver):
                         """
                         the child node is suitable and added to the open_nodes_set (therefore it is visited)
                         """
-                        child.heuristic = self.heuristic.calculate(child, puzzle.grid_goal)
+                        child.update_heuristic(self.heuristic.calculate(child, puzzle.grid_goal))
                         open_nodes_set.add(child)
 
                         """
@@ -95,7 +95,7 @@ class SolverAstar(Solver):
                         expensive element is put on index 0 """
                         target_node_index = 0
                         for node in open_nodes:
-                            if node.total_costs() > child.total_costs():
+                            if node.total_cost > child.total_cost:
                                 break
                             else:
                                 """
