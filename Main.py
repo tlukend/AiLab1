@@ -35,8 +35,8 @@ def main():
         grid_list.append(Grid.create_random_grid())
     end_creating_grid = timer()
 
-    print('\nCreating ' + str(len(grid_list)) + ' puzzles takes ' + str(end_creating_grid - start_creating_grid)
-          + ' seconds.\n')
+    print('\nCreating {} puzzles takes {:.8f} seconds.\n'
+          .format(len(grid_list), end_creating_grid - start_creating_grid))
 
     print('############################################\n# Solving 8-Puzzle using Hamming Heuristic #'
           '\n############################################\n')
@@ -149,46 +149,38 @@ def main():
     # Provide mean and standard deviation of memory usage and execution time for each heuristic
     # calculation and printing of mean for Hamming-time
     mean_hamming = mean(runtime_list_hamming)
-    print('\n###############################\n# Mean and standard deviation #\n###############################\n')
-    print('Mean time to solve Hamming is ' + str(mean_hamming) + ' seconds.')
+    print('\n###############################\n# Mean and standard deviation #\n###############################\n\n'
+          'Hamming-Heuristic:\n------------------')
+    print('\nMean time to solve is {:.8f} seconds.'.format(mean_hamming))
 
     # calculation and printing of standard deviation for Hamming-time
-    print('\nStandard deviation for Hamming-time:')
+    print('\n                 Runtime | Standard deviation')
     std_deviation_ham = []
-    ham_stddev_counter = 0
+    ham_timetable_counter = 0
     for i in runtime_list_hamming:
-        std_deviation_ham.append(abs(runtime_list_hamming[ham_stddev_counter] - mean_hamming))
-        print('Puzzle ' + str(ham_stddev_counter + 1) + ': ' + str(std_deviation_ham[ham_stddev_counter]))
-        ham_stddev_counter += 1
+        std_deviation_ham.append(abs(runtime_list_hamming[ham_timetable_counter] - mean_hamming))
+        print('Puzzle {:>3}: {:>12.8f} | {:>12.8f}'.format(
+            ham_timetable_counter + 1, std_deviation_ham[ham_timetable_counter],
+            runtime_list_hamming[ham_timetable_counter]))
+        ham_timetable_counter += 1
 
-    # printing list of Hamming-times
-    ham_runtime_counter = 0
-    print('\nRuntime list for Hamming-times:')
-    for i in runtime_list_hamming:
-        print('Puzzle ' + str(ham_runtime_counter + 1) + ': ' + str(runtime_list_hamming[ham_runtime_counter]))
-        ham_runtime_counter += 1
+    print('\n \nManhattan-Heuristic:\n--------------------')
 
-    print('\n-----------------')
     # calculation and printing of mean Manhattan-time
     mean_manhattan = mean(runtime_list_manhattan)
-    print('\nMean time to solve Manhattan is ' + str(mean_manhattan) + ' seconds.')
+    print('\nMean time to solve is {:.8f} seconds.'.format(mean_manhattan))
 
-    # calculation and printing of standard deviation for Manhattan-time
-    print('\nStandard deviation for Manhattan-time:')
+    # calculation and printing of runtime and standard deviation for Manhattan-time
+    print('\n                 Runtime | Standard deviation')
     std_deviation_man = []
-    man_stddev_counter = 0
+    man_timetable_counter = 0
     for i in runtime_list_manhattan:
-        std_deviation_man.append(abs(runtime_list_manhattan[man_stddev_counter] - mean_manhattan))
+        std_deviation_man.append(abs(runtime_list_manhattan[man_timetable_counter] - mean_manhattan))
         print(
-            'Puzzle ' + str(man_stddev_counter + 1) + ': ' + str(std_deviation_man[man_stddev_counter]))
-        man_stddev_counter += 1
-
-    # printing list of Manhattan-times
-    man_runtime_counter = 0
-    print('\nRuntime list for Manhattan-times:')
-    for i in runtime_list_manhattan:
-        print('Puzzle ' + str(man_runtime_counter + 1) + ': ' + str(runtime_list_manhattan[man_runtime_counter]))
-        man_runtime_counter += 1
+            'Puzzle {:>3}: {:>12.8f} | {:>12.8f}'.format(
+                man_timetable_counter + 1, std_deviation_man[man_timetable_counter],
+                runtime_list_manhattan[man_timetable_counter]))
+        man_timetable_counter += 1
 
 
 if __name__ == "__main__":
