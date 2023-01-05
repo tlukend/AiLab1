@@ -31,7 +31,7 @@ def main():
 
     # creates a list of 100 random grids
     start_creating_grid = timer()
-    for i in range(3):
+    for i in range(100):
         grid_list.append(Grid.create_random_grid())
     end_creating_grid = timer()
 
@@ -180,7 +180,7 @@ def main():
     for i in runtime_list_manhattan:
         std_deviation_man.append(abs(runtime_list_manhattan[man_stddev_counter] - mean_manhattan))
         print(
-            'Puzzle ' + str(man_stddev_counter + 1) + ' Manhattan-time: ' + str(std_deviation_man[man_stddev_counter]))
+            'Puzzle ' + str(man_stddev_counter + 1) + ': ' + str(std_deviation_man[man_stddev_counter]))
         man_stddev_counter += 1
 
     # printing list of Manhattan-times
