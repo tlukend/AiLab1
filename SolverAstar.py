@@ -2,9 +2,9 @@ from Solver import Solver
 from Node import Node
 
 """Inherits from Solver. The SolverAstar class contains the solve function, which takes a random start state from 
-puzzle and returns the node with the goal state. This is where the A-Star algorithm is implemented. A Object of SolverAstar takes a 
-heuristic as input parameter. This can be the hamming or the manhattan heuristic. Thanks to the modular design the 
-SolverAstar can use any given heuristic. """
+puzzle and returns the node with the goal state. This is where the A-Star algorithm is implemented. A Object of 
+SolverAstar takes a heuristic as input parameter. This can be the hamming or the manhattan heuristic. Thanks to the 
+modular design the SolverAstar can use any given heuristic. """
 
 
 class SolverAstar(Solver):
@@ -58,7 +58,7 @@ class SolverAstar(Solver):
                  returns the solved current node (which is the same as goal_state now) and the numbers of expanded
                  nodes (we give all expanded nodes in closed_nodes_set)
                 """
-                return current_node, len(closed_nodes_set)
+                return current_node, (len(closed_nodes_set) + len(open_nodes))
             else:
                 closed_nodes_set.add(current_node)
                 child_nodes = current_node.generate_child_states()

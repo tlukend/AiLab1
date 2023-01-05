@@ -60,7 +60,7 @@ def main():
         end_single_hamming = timer()
         runtime_list_hamming.append(end_single_hamming - start_single_hamming)
 
-        print('\nThis is the return (current state) if the puzzle is solved:')
+        print('\nPuzzle is solved. This is the return (current state):')
         Grid.print_grid(a.state)
 
         if a.state != grid_goal:
@@ -93,7 +93,7 @@ def main():
         end_single_manhattan = timer()
         runtime_list_manhattan.append(end_single_manhattan - start_single_manhattan)
 
-        print('\nThis is the return (current state) if the puzzle is solved:')
+        print('\nPuzzle is solved. This is the return (current state):')
         Grid.print_grid(a.state)
 
         if a.state != grid_goal:
@@ -143,8 +143,8 @@ def main():
         total_time += runtime_list_manhattan[man_time_count]
         man_time_count += 1
 
-    print('\n--------------------------------------------\nTotal computation time : ' + str(total_time) +
-          '\n--------------------------------------------\n')
+    print('\n--------------------------------------------------\nTotal computation time : ' + str(total_time) +
+          ' seconds' + '\n--------------------------------------------------\n')
 
     # Provide mean and standard deviation of memory usage and execution time for each heuristic
     # calculation and printing of mean for Hamming-time
