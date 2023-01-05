@@ -13,7 +13,7 @@ class SolverAstar(Solver):
 
         """The function takes a random start state and a designated goal state and returns the goal state and the 
         number of expanded nodes. To solve the puzzle it uses the Astar algorithm. To calculate the total costs it 
-        uses a heuristic (hemming or manhattan). """
+        uses a heuristic (hamming or manhattan). """
 
     def solve(self, puzzle):
         """
